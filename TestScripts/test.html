@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="font-size: 90%;">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link type="text/css" rel="stylesheet" href="../common/css/tng.css"/>
+    <link type="text/css" rel="stylesheet" href="../commonGZ/css/lib.css"/>
+    <link type="text/css" rel="stylesheet" href="./css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../commonTemplate/css/thankYouPageTemplate.css"/>
+    <style type="text/css">/* Chart.js */
+    @-webkit-keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes chartjs-render-animation {
+        from {
+            opacity: 0.99
+        }
+        to {
+            opacity: 1
+        }
+    }
+
+    .chartjs-render-monitor {
+        -webkit-animation: chartjs-render-animation 0.001s;
+        animation: chartjs-render-animation 0.001s;
+    }</style>
+    <style type="text/css">._v-container[data-v-ecaca2b0] {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content[data-v-ecaca2b0] {
+        width: 100%;
+        -webkit-transform-origin: left top;
+        -webkit-transform: translateZ(0);
+        -moz-transform-origin: left top;
+        -moz-transform: translateZ(0);
+        -ms-transform-origin: left top;
+        -ms-transform: translateZ(0);
+        -o-transform-origin: left top;
+        -o-transform: translateZ(0);
+        transform-origin: left top;
+        transform: translateZ(0)
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer[data-v-ecaca2b0] {
+        width: 100%;
+        height: 60px;
+        margin-top: -60px;
+        text-align: center;
+        font-size: 16px;
+        color: #aaa
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer[data-v-ecaca2b0] {
+        width: 100%;
+        height: 60px;
+        text-align: center;
+        font-size: 16px;
+        line-height: 60px;
+        color: #aaa;
+        position: relative
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer& gt
+
+    ;
+    .no-data-text[data-v-ecaca2b0] {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer& gt
+
+    ;
+    .no-data-text[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer& gt
+
+    ;
+    .spinner-holder[data-v-ecaca2b0] {
+        opacity: 0;
+        transition: opacity .15s linear;
+        -webkit-transition: opacity .15s linear
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer& gt
+
+    ;
+    .no-data-text.active[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer& gt
+
+    ;
+    .spinner-holder.active[data-v-ecaca2b0] {
+        opacity: 1
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer .spinner-holder[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer .spinner-holder[data-v-ecaca2b0] {
+        text-align: center;
+        -webkit-font-smoothing: antialiased
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer .spinner-holder .arrow[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer .spinner-holder .arrow[data-v-ecaca2b0] {
+        width: 20px;
+        height: 20px;
+        margin: 8px auto 0;
+        -webkit-transform: translateZ(0) rotate(0deg);
+        transform: translateZ(0) rotate(0deg);
+        transition: transform .2s linear
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer .spinner-holder .text[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer .spinner-holder .text[data-v-ecaca2b0] {
+        display: block;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 20px;
+        color: #aaa
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .loading-layer .spinner-holder .spinner[data-v-ecaca2b0], ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer .spinner-holder .spinner[data-v-ecaca2b0] {
+        margin-top: 14px;
+        width: 32px;
+        height: 32px;
+        fill: #444;
+        stroke: #69717d
+    }
+
+    ._v-container& gt
+
+    ;
+    ._v-content& gt
+
+    ;
+    .pull-to-refresh-layer.active .spinner-holder .arrow[data-v-ecaca2b0] {
+        -webkit-transform: translateZ(0) rotate(180deg);
+        transform: translateZ(0) rotate(180deg)
+    }</style>
+    <style type="text/css">@-webkit-keyframes csl-rotate {
+                               0% {
+                                   -webkit-transform: rotate(0deg);
+                                   transform: rotate(0deg)
+                               }
+                               to {
+                                   -webkit-transform: rotate(1turn);
+                                   transform: rotate(1turn)
+                               }
+                           }
+
+    @keyframes csl-rotate {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg)
+        }
+        to {
+            -webkit-transform: rotate(1turn);
+            transform: rotate(1turn)
+        }
+    }
+
+    .cssloading-circle {
+        box-sizing: border-box;
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        font-size: 2px;
+        color: #87cefa;
+        background: #fff;
+        border-radius: 50%;
+        overflow: hidden;
+        -webkit-animation: csl-rotate 1s infinite linear;
+        animation: csl-rotate 1s infinite linear
+    }
+
+    .cssloading-circle:after, .cssloading-circle:before {
+        content: "";
+        display: block;
+        position: absolute
+    }
+
+    .cssloading-circle:before {
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        font-size: 100em;
+        border: .01em solid currentColor;
+        border-radius: 50%
+    }
+
+    .cssloading-circle:after {
+        top: 0;
+        left: 50%;
+        width: 50%;
+        height: 50%;
+        -webkit-transform: translate3d(0, 100%, 0) skew(20deg, 20deg) rotate(0deg);
+        transform: translate3d(0, 100%, 0) skew(20deg, 20deg) rotate(0deg);
+        -webkit-transform-origin: left top;
+        transform-origin: left top;
+        background-color: inherit
+    }</style>
+    <style type="text/css">.vue-recyclist[data-v-ff0640b8] {
+        overflow-x: hidden;
+        overflow-y: auto
+    }
+
+    .vue-recyclist.vue-recyclist-scrollable[data-v-ff0640b8] {
+        -webkit-overflow-scrolling: touch
+    }
+
+    .vue-recyclist .vue-recyclist-items[data-v-ff0640b8] {
+        position: relative;
+        margin: 0;
+        padding: 0
+    }
+
+    .vue-recyclist .vue-recyclist-items .vue-recyclist-invisible[data-v-ff0640b8] {
+        top: -1000px;
+        visibility: hidden
+    }
+
+    .vue-recyclist .vue-recyclist-items .vue-recyclist-item[data-v-ff0640b8] {
+        position: absolute;
+        width: 100%
+    }
+
+    .vue-recyclist .vue-recyclist-items .vue-recyclist-item .vue-recyclist-transition[data-v-ff0640b8] {
+        position: absolute;
+        opacity: 0;
+        transition-property: opacity;
+        transition-duration: .5s
+    }
+
+    .vue-recyclist .vue-recyclist-loading[data-v-ff0640b8] {
+        overflow: hidden
+    }
+
+    .vue-recyclist .vue-recyclist-loading .vue-recyclist-loading-content[data-v-ff0640b8] {
+        width: 100%;
+        text-align: center
+    }
+
+    .vue-recyclist .vue-recyclist-loading .vue-recyclist-loading-content .spinner[data-v-ff0640b8] {
+        margin: 10px auto;
+        width: 20px;
+        height: 20px
+    }
+
+    .vue-recyclist .vue-recyclist-nomore[data-v-ff0640b8] {
+        overflow: hidden;
+        margin: 10px auto;
+        height: 20px;
+        text-align: center
+    }</style>
+    <script src="../commonGZ/js/language.js"></script>
+    <script src="../commonGZ/js/components.js"></script>
+    <script src="../commonGZ/js/wal_ca.js"></script>
+    <style id="commonGZ/components">
+        .tnggz-checkbox {
+            display: -webkit-flex;
+            display: flex;
+            position: relative;
+            text-align: center;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            color: #758D9A;
+        }
+
+        .checkbox {
+            display: inline-block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            background: #01384E;
+            border: 1px solid #054561;
+            border-radius: 8px;
+        }
+
+        .checkbox.check {
+            border: 1px solid #00AAEF;
+        }
+
+        .checkbox a.check {
+            position: absolute;
+            top: 16px;
+            left: 3px;
+            width: 10px;
+            height: 3px;
+            background: #00AAEF;
+            line-height: 0;
+            font-size: 0;
+            vertical-align: middle;
+            -webkit-transform: rotate(45deg);
+        }
+
+        .checkbox a.check:after {
+            content: '/';
+            display: block;
+            width: 20px;
+            height: 3px;
+            background: #00AAEF;
+            -webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);
+        }
+    </style>
+    <script src="../commonGZ/js/language.js"></script>
+    <script src="../forgotPWD/data/language.js"></script>
+    <style id="commonGZ/components">
+        .tnggz-checkbox {
+            display: -webkit-flex;
+            display: flex;
+            position: relative;
+            text-align: center;
+            min-height: 50px;
+            align-items: center;
+            justify-content: center;
+            color: #758D9A;
+        }
+
+        .checkbox {
+            display: inline-block;
+            position: relative;
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            background: #01384E;
+            border: 1px solid #054561;
+            border-radius: 8px;
+        }
+
+        .checkbox.check {
+            border: 1px solid #00AAEF;
+        }
+
+        .checkbox a.check {
+            position: absolute;
+            top: 16px;
+            left: 3px;
+            width: 10px;
+            height: 3px;
+            background: #00AAEF;
+            line-height: 0;
+            font-size: 0;
+            vertical-align: middle;
+            -webkit-transform: rotate(45deg);
+        }
+
+        .checkbox a.check:after {
+            content: '/';
+            display: block;
+            width: 20px;
+            height: 3px;
+            background: #00AAEF;
+            -webkit-transform: rotate(-90deg) translateY(-50%) translateX(50%);
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="../commonTemplate/css/notificationTemplate.css"/>
+    <style id="otp-style">
+        .otp-page {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding-top: 50px;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .otp-page
+
+        &
+        gt
+
+        ;
+        .otp-text {
+            text-align: center;
+            max-width: 310px;
+            font-size: 1.0625rem;
+        }
+
+        .otp-page
+
+        &
+        gt
+
+        ;
+        .otp-text.big {
+            font-size: 1.1875rem;
+        }
+
+        .otp-page
+
+        &
+        gt
+
+        ;
+        .little-blank {
+            height: 1rem;
+        }
+
+        .yellow {
+            color: #FDC427;
+        }
+
+        .red {
+            color: #FF3B30;
+        }
+
+        .otp-page
+
+        &
+        gt
+
+        ;
+        .otp-btngroup {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .otp-btngroup
+
+        &
+        gt
+
+        ;
+        .otp-btn {
+            width: 140px;
+            min-height: 27px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #7A919D;
+            border-radius: 100px;
+            margin: 0 7.5px;
+            color: #fff;
+        }
+
+        .otp-floatBtn {
+            color: #00AEEF;
+            position: absolute;
+            top: 0px;
+            left: 1rem;
+            z-index: 100;
+        }
+
+        .grey {
+            color: #7A919D !important;
+        }
+
+        .otp-btn.grey {
+            background: none !important;
+        }
+
+        .otp-bubble-wrapper {
+            position: relative;
+            margin-top: 14px;
+        }
+
+        .otp-bubble-wrapper:after {
+            content: "";
+            position: absolute;
+            background: url(../commonGZ/icons/sms_arrow.svg) center center no-repeat transparent;
+            display: block;
+            top: -9px;
+            left: 50%;
+            margin-left: -6px;
+            width: 13px;
+            height: 9px;
+        }
+
+        .otp-bubble {
+            position: relative;
+            height: 39px;
+            background: #FDBA25;
+            padding: 8px 1px;
+            margin-bottom: 10px;
+            color: #052939;
+            font-size: 17px;
+        }
+
+        .otp-bubble:before,
+        .otp-bubble:after {
+            content: "";
+            position: absolute;
+            background: #FDBA25;
+            width: 20px;
+            height: 39px;
+            top: 0;
+        }
+
+        .otp-bubble:after {
+            left: -19px;
+            border-bottom-left-radius: 45px;
+            border-top-left-radius: 45px;
+        }
+
+        .otp-bubble:before {
+            right: -19px;
+            border-bottom-right-radius: 45px;
+            border-top-right-radius: 45px;
+        }
+
+        .otp-resendbtn {
+            background: #00AEEF;
+            border-radius: 100px;
+            min-width: 160px;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: center;
+            margin: 28px auto;
+            padding: 0 15px;
+            height: 27px;
+            line-height: 27px;
+        }
+
+        .otp-resendbtn.cd {
+            border: 1px solid #7A919D;
+            background: none;
+        }
+    </style>
+</head>
+<body class="android en" style="height: 573px;">
+<div id="global-elements"><!---->
+    <div id="global-controls"><!----> <!----></div>
+    <div id="global-robot" class="container" style="position: fixed;">
+        <div class="robot"></div>
+        <div id="msg" class="messagebox right" style="display: none;">
+            <div class="close"></div>
+            How can I help you?
+        </div>
+    </div>
+</div>
+<div class="viewport noPaddingTop" style="height: 573px;"><!---->
+    <div class="fullPage flex presesntPage transModule">
+        <div class="image-presenter">
+            <div class="inner" style="transform: translate3d(0px, 0px, 0px); width: 2160px;">
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/D1.png" class="content"/> <img src="./img/p/D2.jpg"
+                                                                                              class="bg"/></div>
+                    <div class="static-text">24-hour Cash-In and Cash-Out</div>
+                </div>
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/E1.png" class="content"/> <img src="./img/p/E2.jpg"
+                                                                                              class="bg"/></div>
+                    <div class="static-text">Cash withdrawal overseas at your convenience.</div>
+                </div>
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/F1.png" class="content-cover"/> <img src="./img/p/F2.jpg"
+                                                                                                    class="bg"/></div>
+                    <div class="static-text">Remit to your family &amp; friends overseas.</div>
+                </div>
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/A1.png" class="content"/> <img src="./img/p/A2.png"
+                                                                                              class="bg"/></div>
+                    <div class="static-text">Got a question? Just ask!</div>
+                </div>
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/B1.png" class="content"/> <img src="./img/p/B2.png"
+                                                                                              class="bg"/></div>
+                    <div class="static-text">Chat + Pay, your one stop solution.</div>
+                </div>
+                <div class="present-page" style="width: 360px;">
+                    <div class="img-wrapper"><img src="./img/p/C1.png" class="content"/> <img src="./img/p/C2.png"
+                                                                                              class="bg"/></div>
+                    <div class="static-text">Stay Connected with your friends and family, no matter where you are.</div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="present-ctrl">
+                <div class="present-ctrl-item activeItem"></div>
+                <div class="present-ctrl-item"></div>
+                <div class="present-ctrl-item"></div>
+                <div class="present-ctrl-item"></div>
+                <div class="present-ctrl-item"></div>
+                <div class="present-ctrl-item"></div>
+            </div>
+        </div>
+        <div class="btnGroup">
+            <div class="inner">
+                <div class="tng-button white-green">
+                    <div class="wrapper">
+                        <div class="text">Create New Account</div> <!----></div>
+                </div>
+                <div class="holder"></div>
+                <div class="tng-button green-fill">
+                    <div class="wrapper">
+                        <div class="text">TNG Member</div> <!----></div>
+                </div>
+            </div>
+        </div>
+    </div> <!----></div>
+<script src="../common/js/tng.js" type="text/javascript"></script>
+<script src="../common/data/tng-language.js" type="text/javascript"></script>
+<script src="../commonGZ/js/config.js"></script>
+<script src="data/language.js" type="text/javascript"></script>
+<script src="../forgotPWD/data/language.js"></script>
+<script src="../commonGZ/js/commonPage.js"></script>
+<script src="../commonGZ/js/lib.js"></script>
+<script src="../commonGZ/js/static_data.js"></script>
+<script src="../commonGZ/js/fdl_lang.js" type="text/javascript"></script>
+<script src="../commonGZ/js/models.js"></script>
+<script src="../commonGZ/js/otp.js"></script>
+<script src="../commonGZ/js/components.js"></script>
+<script src="../commonTemplate/js/thankYouPageTemplate.js"></script>
+<script src="../commonTemplate/data/thankyou_lang.js"></script>
+<script src="../txPin/js/txPin.js"></script>
+<script src="js/store.js" type="text/javascript"></script>
+<script src="js/scripts.js" type="text/javascript"></script>
+<script src="js/app.js" type="text/javascript"></script>
+<script src="../commonTemplate/js/notificationTemplate.js"></script>
+<div class="transitionWrapper" style="display: none;">
+    <div class="pesudo-header"></div>
+</div>
+</body>
+<iframe src="wvjbscheme://__WVJB_QUEUE_MESSAGE__" style="display: none;"></iframe>
+</html>
